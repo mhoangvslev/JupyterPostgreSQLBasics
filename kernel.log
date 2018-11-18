@@ -1,0 +1,1387 @@
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+inside init
+starting connection
+failed to connect to 
+starting connection
+failed to connect to postgresql://localhost:5432/Sakila
+starting connection
+fetching all from: 
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+-- pip3 install ipython-sql
+
+
+fetching all from: 
+SELECT * FROM country;
+fetching one from: 
+SELECT VERSION();
+('PostgreSQL 11.1 (Ubuntu 11.1-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0, 64-bit',)
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT * FROM country;
+!psql -d myDataBase -a -f myInsertFile
+fetching all from: 
+SELECT * FROM country;
+psql -d myDataBase -a -f myInsertFile
+fetching all from: 
+SELECT * FROM country;
+-- psql -d myDataBase -a -f myInsertFile
+fetching all from: 
+!pwd
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT * FROM country;
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('year', timestamp '2001-02-16 20:38:40');
+fetching all from: 
+SELECT c.first_name, c.last_name FROM customer c, payment p WHERE c.customer_id = p.customer_id and p.amount between 1 and 2
+fetching all from: 
+SELECT DISTINCT c.first_name, c.last_name FROM customer c, payment p WHERE c.customer_id = p.customer_id and p.amount between 1 and 2
+fetching all from: 
+SELECT DISTINCT c.first_name, c.last_name, p.amount FROM customer c, payment p WHERE c.customer_id = p.customer_id and p.amount between 1 and 2
+fetching one from: 
+SELECT VERSION();
+('PostgreSQL 11.1 (Ubuntu 11.1-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0, 64-bit',)
+fetching all from: 
+SELECT DISTINCT * FROM rental r WHERE r.return_date < r.rental_date + interval '24 hours';
+fetching all from: 
+SELECT * FROM rental r WHERE date_part('hour', r.rental_date) > 23 AND date_part('hour', r.rental_date) < 24
+fetching all from: 
+SELECT * FROM rental r WHERE date_part('hour', r.rental_date) > 23 AND date_part('hour', r.rental_date) < 24
+fetching all from: 
+SELECT * FROM rental r WHERE date_part('hour', r.rental_date) > 23 AND date_part('hour', r.rental_date) < 24;
+fetching all from: 
+SELECT * FROM rental r WHERE date_part('hour', r.rental_date) > 23 
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('hour', timestamp '2001-02-16 20:38:40');
+fetching all from: 
+SELECT * FROM rental r WHERE date_part(hour, r.rental_date) > 23 AND date_part(hour, r.rental_date) < 24;
+fetching all from: 
+SELECT * FROM rental r WHERE DATEPART(hour, r.rental_date) > 23 AND date_part(hour, r.rental_date) < 24;
+fetching all from: 
+SELECT * FROM rental r WHERE DATEPART('hour', r.rental_date) > 23 AND DATEPART('hour', r.rental_date) < 24;
+fetching all from: 
+SELECT * FROM rental r WHERE date_part('hour', r.rental_date) > 23 AND date_part('hour', r.rental_date) < 24;
+fetching all from: 
+SELECT * FROM rental r WHERE date_part('hour', r.rental_date) between 23 AND 24;
+fetching all from: 
+SELECT c.first_name, c.last_name FROM customer c, address a WHERE c.address_id = a.address_id and a.postal_code ~ "47.*"
+fetching all from: 
+SELECT c.first_name, c.last_name FROM customer c, address a WHERE c.address_id = a.address_id and a.postal_code ~* '47.*'
+fetching all from: 
+SELECT DISTINCT * FROM address;
+fetching all from: 
+SELECT DISTINCT * FROM address a, country c WHERE upper(c.country) = upper('france');
+fetching all from: 
+SELECT i.film_id FROM inventory i WHERE NOT EXISTS
+    SELECT r.inventory_id FROM rental r WHERE i.inventory_id = r.inventory_id;
+fetching all from: 
+SELECT i.film_id FROM inventory i WHERE NOT EXISTS
+    (SELECT r.inventory_id FROM rental r WHERE i.inventory_id = r.inventory_id);
+fetching all from: 
+SELECT * FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 1;
+fetching all from: 
+SELECT r.rental_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 1;
+fetching all from: 
+SELECT r.inventory_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 1;
+fetching all from: 
+SELECT i.film_id FROM inventory i WHERE EXISTS
+    (SELECT r.inventory_id FROM rental r WHERE i.inventory_id = r.inventory_id);
+fetching all from: 
+SELECT DISTINCT i.film_id FROM inventory i WHERE EXISTS
+    (SELECT r.inventory_id FROM rental r WHERE i.inventory_id = r.inventory_id);
+fetching all from: 
+SELECT r.inventory_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 652;
+fetching all from: 
+SELECT r.inventory_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 51;
+fetching all from: 
+SELECT DISTINCT r.inventory_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 51;
+fetching all from: 
+SELECT DISTINCT r.inventory_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 70;
+fetching all from: 
+SELECT DISTINCT i.inventory_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 70;
+fetching all from: 
+SELECT DISTINCT i.film_id FROM inventory i WHERE NOT EXISTS
+    (SELECT r.inventory_id FROM rental r WHERE i.inventory_id = r.inventory_id);
+fetching all from: 
+SELECT DISTINCT i.film_id FROM inventory i WHERE i.inventory_id NOT IN
+    (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT DISTINCT i.inventory_id FROM inventory i, rental r WHERE i.inventory_id = r.inventory_id and i.film_id = 70;
+fetching all from: 
+SELECT DISTINCT i.film_id FROM inventory i WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT DISTINCT i.inventory_id FROM inventory i WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT i.inventory_id FROM inventory i WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT DISTINCT r.inventory_id FROM rental r WHERE r.inventory_id = 5;
+fetching all from: 
+SELECT i.inventory_id, i.film_id FROM inventory i WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT i.film_id, COUNT(r.rental_id) 
+FROM inventory i, rental r 
+WHERE i.inventory_id = r.inventory_id GROUP BY(i.film_id);
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching one from: 
+SELECT VERSION();
+('PostgreSQL 11.1 (Ubuntu 11.1-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0, 64-bit',)
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('hour', timestamp '2001-02-16 20:38:40');
+starting connection
+fetching all from: 
+set datestyle = 'european'
+
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('hour', timestamp '2001-02-16 20:38:40');
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+set datestyle = 'european'
+
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('hour', timestamp '2001-02-16 20:38:40');
+fetching all from: 
+SELECT DISTINCT c.first_name, c.last_name, p.amount 
+FROM customer c, payment p 
+WHERE c.customer_id = p.customer_id and p.amount between 1 and 2;
+fetching all from: 
+SELECT DISTINCT * 
+FROM rental r 
+WHERE r.return_date < r.rental_date + interval '24 hours';
+fetching all from: 
+SELECT * 
+FROM rental r 
+WHERE date_part('hour', r.rental_date) between 23 AND 24;
+fetching all from: 
+SELECT c.first_name, c.last_name 
+FROM customer c, address a 
+WHERE c.address_id = a.address_id and a.postal_code ~* '47.*';
+fetching all from: 
+SELECT DISTINCT * 
+FROM address a, country c 
+WHERE upper(c.country) = upper('france');
+fetching all from: 
+SELECT i.inventory_id, i.film_id 
+FROM inventory i 
+WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT DISTINCT r.inventory_id 
+FROM rental r 
+WHERE r.inventory_id = 5;
+fetching all from: 
+SELECT i.film_id, COUNT(r.rental_id) 
+FROM inventory i, rental r 
+WHERE i.inventory_id = r.inventory_id GROUP BY(i.film_id);
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT DISTINCT(r.rental_id) 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT (DISTINCT r.rental_id) 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT(DISTINCT r.rental_id) 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name
+fetching all from: 
+SELECT COUNT(DISTINCT i.film_id)
+FROM inventory i, customer c, rental_r, address a, country h
+WHERE i.inventory_id = r.inventory_id and c.customer_id = r.customer_id and c.country_id = h.country_id
+        and upper(h.country) = upper('Germany')
+fetching all from: 
+SELECT COUNT(DISTINCT i.film_id)
+FROM inventory i, customer c, rental r, address a, country h
+WHERE i.inventory_id = r.inventory_id and c.customer_id = r.customer_id and c.country_id = h.country_id
+        and upper(h.country) = upper('Germany')
+fetching all from: 
+SELECT COUNT(DISTINCT i.film_id)
+FROM inventory i, customer c, rental r, address a, country h
+WHERE i.inventory_id = r.inventory_id and c.customer_id = r.customer_id and a.country_id = h.country_id
+        and upper(h.country) = upper('Germany')
+fetching all from: 
+SELECT COUNT(DISTINCT i.film_id)
+FROM inventory i, customer c, rental r, address a, country h, city cty
+WHERE i.inventory_id = r.inventory_id and c.customer_id = r.customer_id and a.city_id = cty.city_id 
+        and cty.country_id = h.country_id and upper(h.country) = upper('Germany')
+fetching all from: 
+SELECT DISTINCT * 
+FROM address a, city cty, country c 
+WHERE a.city_id = cty.city_id and c.country_id = cty.country_id and upper(c.country) = upper('france');
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+set datestyle = 'european'
+
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT s.store_id, COUNT(DISTINCT r.rental_id)
+FROM store s, inventory i, rental r
+WHERE s.store_id = i.store_id AND r.inventory_id = i.inventory_id
+GROUP BY s.store_id
+fetching all from: 
+select * from store
+fetching one from: 
+SELECT VERSION();
+('PostgreSQL 11.1 (Ubuntu 11.1-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0, 64-bit',)
+fetching all from: 
+SELECT c.first_name, c.last_name, AVG(p.amount), SUM(p.amount)
+FROM customer c, payment p
+WHERE c.customer_id = p.customer_id
+fetching all from: 
+SELECT c.first_name, c.last_name, AVG(p.amount), SUM(p.amount)
+FROM customer c, payment p
+WHERE c.customer_id = p.customer_id
+GROUP BY c.first_name, c.last_name
+fetching all from: 
+SELECT c.customer_id, r.rental_date, COUNT(DISTINCT r.rental_id)
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.customer_id, r.rental_date
+fetching all from: 
+SELECT c.customer_id, r.rental_date::timestamp::date, COUNT(DISTINCT r.rental_id)
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.customer_id, r.rental_date
+fetching all from: 
+SELECT c.customer_id, r.rental_date::timestamp::date, COUNT(DISTINCT r.rental_id)
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.customer_id, r.rental_date::timestamp::date
+fetching all from: 
+SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.customer_id, rdate
+
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+UNION
+(
+    SELECT COUNT(DISTINCT r.rental_id) 
+    FROM rental r
+    WHERE r.rental_date::timestamp::date = rdate
+)
+
+
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+UNION
+(
+    SELECT COUNT(DISTINCT r.rental_id) 
+    FROM rental r
+    WHERE r.rental_date::timestamp::date = '$rdate'
+)
+
+
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+UNION ALL
+(
+    SELECT COUNT(DISTINCT r.rental_id) 
+    FROM rental r
+    WHERE r.rental_date::timestamp::date = '$rdate'
+)
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+set datestyle = 'european'
+
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('hour', timestamp '2001-02-16 20:38:40');
+fetching all from: 
+SELECT DISTINCT c.first_name, c.last_name, p.amount 
+FROM customer c, payment p 
+WHERE c.customer_id = p.customer_id and p.amount between 1 and 2;
+fetching all from: 
+SELECT DISTINCT * 
+FROM rental r 
+WHERE r.return_date < r.rental_date + interval '24 hours';
+fetching all from: 
+SELECT * 
+FROM rental r 
+WHERE date_part('hour', r.rental_date) between 23 AND 24;
+fetching all from: 
+SELECT c.first_name, c.last_name 
+FROM customer c, address a 
+WHERE c.address_id = a.address_id and a.postal_code ~* '47.*';
+fetching all from: 
+SELECT DISTINCT * 
+FROM address a, city cty, country c 
+WHERE a.city_id = cty.city_id and c.country_id = cty.country_id and upper(c.country) = upper('france');
+fetching all from: 
+SELECT i.inventory_id, i.film_id 
+FROM inventory i 
+WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT DISTINCT r.inventory_id 
+FROM rental r 
+WHERE r.inventory_id = 5;
+fetching all from: 
+SELECT i.film_id, COUNT(r.rental_id) 
+FROM inventory i, rental r 
+WHERE i.inventory_id = r.inventory_id GROUP BY(i.film_id);
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT(DISTINCT r.rental_id) 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name
+fetching all from: 
+SELECT COUNT(DISTINCT i.film_id)
+FROM inventory i, customer c, rental r, address a, country h, city cty
+WHERE i.inventory_id = r.inventory_id and c.customer_id = r.customer_id and a.city_id = cty.city_id 
+        and cty.country_id = h.country_id and upper(h.country) = upper('Germany')
+fetching all from: 
+SELECT s.store_id, COUNT(DISTINCT r.rental_id)
+FROM store s, inventory i, rental r
+WHERE s.store_id = i.store_id AND r.inventory_id = i.inventory_id
+GROUP BY s.store_id
+fetching all from: 
+SELECT c.first_name, c.last_name, AVG(p.amount), SUM(p.amount)
+FROM customer c, payment p
+WHERE c.customer_id = p.customer_id
+GROUP BY c.first_name, c.last_name
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+UNION ALL
+(
+    SELECT COUNT(DISTINCT r.rental_id) 
+    FROM rental r
+    WHERE r.rental_date::timestamp::date = '$rdate'
+)
+fetching one from: 
+SELECT VERSION();
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r JOIN (
+        SELECT COUNT(DISTINCT r.rental_id) 
+        FROM rental r
+        WHERE r.rental_date::timestamp::date = '$rdate'
+    )
+    WHERE c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r JOIN (
+        SELECT COUNT(DISTINCT r.rental_id) 
+        FROM rental r
+        WHERE r.rental_date::timestamp::date = '$rdate'
+    ) as nb_loc_date
+    WHERE c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r JOIN (
+        SELECT COUNT(DISTINCT r.rental_id) 
+        FROM rental r
+        WHERE r.rental_date::timestamp::date = '$rdate'
+    ) as nb_loc_date
+    ON c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r JOIN (
+        SELECT COUNT(DISTINCT r.rental_id) 
+        FROM rental r
+        WHERE r.rental_date::timestamp::date = rdate
+    ) as nb_loc_date
+    ON c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+fetching one from: 
+SELECT VERSION();
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r JOIN (
+        SELECT COUNT(DISTINCT r.rental_id) 
+        FROM rental r
+        WHERE r.rental_date::timestamp::date = rdate
+    ) as nb_loc_date
+    ON c.customer_id = r.customer_id
+    GROUP BY c.customer_id, rdate
+)
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r JOIN (
+        SELECT COUNT(DISTINCT r2.rental_id) 
+        FROM rental r2
+    ) as nb_loc_date
+    ON c.customer_id = r.customer_id and r2.rental_date::timestamp::date = rdate
+    GROUP BY c.customer_id, rdate
+)
+fetching all from: 
+SELECT * FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+    FROM customer c, rental r 
+    WHERE c.customer_id = r.customer_id 
+    GROUP BY c.customer_id, rdate
+) as r1
+JOIN
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) 
+    FROM rental r
+    GROUP BY rdate
+) as r2
+ON r1.rdate = r2.rdate
+fetching all from: 
+SELECT r1.customer_id, r1.rdate, r1.nbLocationClient, r2.nbLocationJour FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLocationClient
+    FROM customer c, rental r 
+    WHERE c.customer_id = r.customer_id 
+    GROUP BY c.customer_id, rdate
+) as r1
+JOIN
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLocationJour
+    FROM rental r
+    GROUP BY rdate
+) as r2
+ON r1.rdate = r2.rdate
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+set datestyle = 'european'
+
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('hour', timestamp '2001-02-16 20:38:40');
+fetching all from: 
+SELECT DISTINCT c.first_name, c.last_name, p.amount 
+FROM customer c, payment p 
+WHERE c.customer_id = p.customer_id and p.amount between 1 and 2;
+fetching all from: 
+SELECT DISTINCT * 
+FROM rental r 
+WHERE r.return_date < r.rental_date + interval '24 hours';
+fetching all from: 
+SELECT * 
+FROM rental r 
+WHERE date_part('hour', r.rental_date) between 23 AND 24;
+fetching all from: 
+SELECT c.first_name, c.last_name 
+FROM customer c, address a 
+WHERE c.address_id = a.address_id and a.postal_code ~* '47.*';
+fetching all from: 
+SELECT DISTINCT * 
+FROM address a, city cty, country c 
+WHERE a.city_id = cty.city_id and c.country_id = cty.country_id and upper(c.country) = upper('france');
+fetching all from: 
+SELECT i.inventory_id, i.film_id 
+FROM inventory i 
+WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT DISTINCT r.inventory_id 
+FROM rental r 
+WHERE r.inventory_id = 5;
+fetching all from: 
+SELECT i.film_id, COUNT(r.rental_id) 
+FROM inventory i, rental r 
+WHERE i.inventory_id = r.inventory_id GROUP BY(i.film_id);
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT(DISTINCT r.rental_id) 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name
+fetching all from: 
+SELECT COUNT(DISTINCT i.film_id)
+FROM inventory i, customer c, rental r, address a, country h, city cty
+WHERE i.inventory_id = r.inventory_id and c.customer_id = r.customer_id and a.city_id = cty.city_id 
+        and cty.country_id = h.country_id and upper(h.country) = upper('Germany')
+fetching all from: 
+SELECT s.store_id, COUNT(DISTINCT r.rental_id)
+FROM store s, inventory i, rental r
+WHERE s.store_id = i.store_id AND r.inventory_id = i.inventory_id
+GROUP BY s.store_id
+fetching all from: 
+SELECT c.first_name, c.last_name, AVG(p.amount), SUM(p.amount)
+FROM customer c, payment p
+WHERE c.customer_id = p.customer_id
+GROUP BY c.first_name, c.last_name
+fetching all from: 
+SELECT r1.customer_id, r1.rdate, r1.nbLocationClient, r2.nbLocationJour FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLocationClient
+    FROM customer c, rental r 
+    WHERE c.customer_id = r.customer_id 
+    GROUP BY c.customer_id, rdate
+) as r1
+JOIN
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLocationJour
+    FROM rental r
+    GROUP BY rdate
+) as r2
+ON r1.rdate = r2.rdate
+fetching all from: 
+SELECT c.first_name, c.last_name 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+HAVING COUNT(DISTINCT r.rental_id) < 15
+fetching all from: 
+SELECT c.first_name, c.last_name 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name 
+HAVING COUNT(DISTINCT r.rental_id) < 15
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT(DISTINCT r.rental_id) as nbLocations
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name 
+HAVING nbLocations < 15
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT(DISTINCT r.rental_id) as nbLocations
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name 
+HAVING COUNT(DISTINCT r.rental_id) < 15
+fetching one from: 
+SELECT VERSION();
+('PostgreSQL 11.1 (Ubuntu 11.1-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0, 64-bit',)
+fetching all from: 
+SELECT COUNT(DISTINCT r1.customer_id) FROM
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = to_date('2005-07-30')
+) r1
+UNION ALL
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = 35200
+) r2
+
+fetching all from: 
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = to_date('2005-07-30')
+) 
+UNION ALL
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = 35200
+)
+
+fetching all from: 
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = '2005-07-30'::date
+) 
+UNION ALL
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = 35200
+)
+
+fetching all from: 
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = '2005-07-30'::date
+) 
+UNION ALL
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = '35200'
+)
+
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate
+    FROM customer c, rental r
+    WHERE rdate = '2005-07-30'::date
+) 
+UNION ALL
+(
+    SELECT c.customer_id, a.postal_code
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = '35200'
+)
+
+fetching all from: 
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = '2005-07-30'::date
+) 
+UNION ALL
+(
+    SELECT c.customer_id, a.postal_code
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = '35200'
+)
+
+fetching all from: 
+SELECT COUNT(DISTINCT customer_id)
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = '2005-07-30'::date
+) 
+UNION ALL
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = '35200'
+)
+
+fetching all from: 
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = '2005-07-30'::date
+) 
+UNION ALL
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = '35200'
+)
+
+fetching all from: 
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = '2005-07-30'::date
+) 
+UNION DISTINCT
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = '35200'
+)
+
+fetching all from: 
+SELECT c.customer_id, date_part('month', r.rental_date)
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id and 
+    date_part('month', r.rental_date) = 11
+fetching all from: 
+SELECT r1.customer_id, r2.rdate FROM
+(
+    SELECT c.customer_id, date_part('month', r.rental_date) as rdate
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id and 
+        date_part('month', r.rental_date) = 11
+) r1
+JOIN
+(
+    SELECT c.customer_id, date_part('month', r.rental_date) as rdate
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id and 
+        date_part('month', r.rental_date) != 10
+) r2
+ON r1.customer_id = r2.customer_id
+fetching all from: 
+SELECT r.rental_date::timestamp::date as rdate, MAX(COUNT(DISTINCT r.rental_id))
+FROM rental r
+GROUP BY rdate                                            
+fetching all from: 
+SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id)
+FROM rental r
+GROUP BY rdate                                            
+fetching all from: 
+SELECT r1.rdate, MAX(r1.nbLoc) FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+)
+fetching all from: 
+SELECT r1.rdate, MAX(r1.nbLoc) FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+fetching all from: 
+SELECT r1.rdate, MAX(r1.nbLoc) FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+GROUP BY r1.rdate
+fetching all from: 
+SELECT MAX(r1.nbLoc) FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+GROUP BY r1.rdate
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+GROUP BY r1.rdate, r1.nbLoc
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+WHERE r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+WHERE r1.nbLoc = SELECT MAX(r1.nbLoc) FROM r1
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+WHERE r1.nbLoc = (SELECT MAX(r1.nbLoc) FROM r1)
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT * FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+GROUP BY r1.rdate, r1.nbLoc
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT MAX(r1.nbLoc) FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+fetching all from: 
+SELECT r1.customer_id  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT r1.customer_id  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT r1.customer_id  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id, r1.nbLoc
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT r1.customer_id, r1.nbLoc  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id, r1.nbLoc
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT r1.customer_id, r1.nbLoc  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id, r1.nbLoc
+HAVING r1.nbLoc = 3
+fetching all from: 
+SELECT r1.customer_id, r1.nbLoc  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+    HAVING nbLoc = MAX(nbLoc)
+) r1
+GROUP BY r1.customer_id, r1.nbLoc
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT r1.customer_id, r1.nbLoc  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id, r1.nbLoc
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+fetching all from: 
+SELECT r1.customer_id, MAX(r1.nbLoc)  FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id
+fetching all from: 
+SELECT r2.customer_id, MAX(r2.record) FROM
+(
+    SELECT r1.customer_id, MAX(r1.nbLoc) as record  FROM
+    (
+        SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+        FROM rental r, customer c
+        WHERE r.customer_id = c.customer_id
+        GROUP BY c.customer_id, rdate   
+    ) r1
+    GROUP BY r1.customer_id
+)r2
+GROUP BY r2.customer_id
+fetching all from: 
+SELECT r1.customer_id, MAX(r1.nbLoc) as record FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id
+ORDER BY record desc
+LIMIT 1
+fetching all from: 
+SELECT r1.customer_id, MAX(r1.nbLoc) as record FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+ORDER BY record desc
+LIMIT 1
+fetching all from: 
+SELECT r1.customer_id, MAX(r1.nbLoc) as record FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id, r1.nbLoc
+HAVING r1.nbLoc = MAX(r1.nbLoc)
+ORDER BY record desc
+LIMIT 1
+fetching all from: 
+SELECT r1.customer_id, r1.nbLoc as record FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id, r1.nbLoc
+HAVING r1.nbLoc > ALL r1.nbLoc
+ORDER BY record desc
+LIMIT 1
+fetching all from: 
+SELECT r1.customer_id, r1.nbLoc as record FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+WHERE r1.nbLoc > ALL r1.nbLoc
+fetching all from: 
+SELECT r1.customer_id, r1.nbLoc as record FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+WHERE r1.nbLoc > ALL(
+    SELECT r1.nbLoc FROM r1
+)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc as record 
+FROM r1
+WHERE r1.nbLoc > ALL(SELECT r1.nbLoc FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc > ALL(SELECT r1.nbLoc FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc = (SELECT MAX(r1.nbLoc) FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc > ANY(SELECT r1.nbLoc FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+HAVING r1.nbLoc > ANY(SELECT r1.nbLoc FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+GROUP BY r1.customer_id, r1.nbLoc 
+HAVING r1.nbLoc > ANY(SELECT r1.nbLoc FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+GROUP BY r1.customer_id
+HAVING r1.nbLoc > ANY(SELECT r1.nbLoc FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+HAVING r1.nbLoc > ANY(SELECT r1.nbLoc FROM r1 GROUP BY r1.customer_id, r1.nbLoc )
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc > ANY(SELECT r1.nbLoc FROM r1 GROUP BY r1.customer_id, r1.nbLoc )
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc > ALL(SELECT r1.nbLoc FROM r1 GROUP BY r1.customer_id, r1.nbLoc )
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc >= ALL(SELECT r1.nbLoc FROM r1 )
+inside init
+starting connection
+failed to connect to 
+starting connection
+fetching all from: 
+set datestyle = 'european'
+
+-- PostGre SQL Kernel pour Jupyter
+-- pip3 install git+https://github.com/bgschiller/postgres_kernel.git
+
+fetching all from: 
+SELECT date '2001-10-01' - date '2001-09-28';
+SELECT timestamp '2001-09-28 01:00' + interval '18 hours';
+SELECT age(timestamp '2001-04-10', timestamp '1957-06-13');
+SELECT age(timestamp '1998-06-11');
+SELECT date_part('year', timestamp '2001-02-16 20:38:40');
+SELECT date_trunc('hour', timestamp '2001-02-16 20:38:40');
+fetching all from: 
+SELECT DISTINCT c.first_name, c.last_name, p.amount 
+FROM customer c, payment p 
+WHERE c.customer_id = p.customer_id and p.amount between 1 and 2
+LIMIT 10
+fetching all from: 
+SELECT DISTINCT * 
+FROM rental r 
+WHERE r.return_date < r.rental_date + interval '24 hours'
+LIMIT 10
+fetching all from: 
+SELECT * 
+FROM rental r 
+WHERE date_part('hour', r.rental_date) between 23 AND 24
+LIMIT 10
+fetching all from: 
+SELECT c.first_name, c.last_name 
+FROM customer c, address a 
+WHERE c.address_id = a.address_id and a.postal_code ~* '47.*'
+
+fetching all from: 
+SELECT DISTINCT * 
+FROM address a, city cty, country c 
+WHERE a.city_id = cty.city_id and c.country_id = cty.country_id and upper(c.country) = upper('france')
+fetching all from: 
+SELECT i.inventory_id, i.film_id 
+FROM inventory i 
+WHERE i.inventory_id NOT IN (SELECT r.inventory_id FROM rental r );
+fetching all from: 
+SELECT DISTINCT r.inventory_id 
+FROM rental r 
+WHERE r.inventory_id = 5;
+fetching all from: 
+SELECT i.film_id, COUNT(r.rental_id) 
+FROM inventory i, rental r 
+WHERE i.inventory_id = r.inventory_id GROUP BY(i.film_id)
+LIMIT 10
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT(DISTINCT r.rental_id) 
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name
+LIMIT 10
+fetching all from: 
+SELECT COUNT(DISTINCT i.film_id)
+FROM inventory i, customer c, rental r, address a, country h, city cty
+WHERE i.inventory_id = r.inventory_id and c.customer_id = r.customer_id and a.city_id = cty.city_id 
+        and cty.country_id = h.country_id and upper(h.country) = upper('Germany')
+fetching all from: 
+SELECT s.store_id, COUNT(DISTINCT r.rental_id)
+FROM store s, inventory i, rental r
+WHERE s.store_id = i.store_id AND r.inventory_id = i.inventory_id
+GROUP BY s.store_id
+fetching all from: 
+SELECT c.first_name, c.last_name, AVG(p.amount), SUM(p.amount)
+FROM customer c, payment p
+WHERE c.customer_id = p.customer_id
+GROUP BY c.first_name, c.last_name
+LIMIT 10
+fetching all from: 
+SELECT r1.customer_id, r1.rdate, r1.nbLocationClient, r2.nbLocationJour FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLocationClient
+    FROM customer c, rental r 
+    WHERE c.customer_id = r.customer_id 
+    GROUP BY c.customer_id, rdate
+) as r1
+JOIN
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLocationJour
+    FROM rental r
+    GROUP BY rdate
+) as r2
+ON r1.rdate = r2.rdate
+LIMIT 10
+fetching all from: 
+SELECT c.first_name, c.last_name, COUNT(DISTINCT r.rental_id) as nbLocations
+FROM customer c, rental r
+WHERE c.customer_id = r.customer_id
+GROUP BY c.first_name, c.last_name 
+HAVING COUNT(DISTINCT r.rental_id) < 15
+fetching all from: 
+(
+    SELECT c.customer_id 
+    FROM customer c, rental r
+    WHERE r.rental_date::timestamp::date = '2005-07-30'::date
+) 
+UNION DISTINCT
+(
+    SELECT c.customer_id
+    FROM customer c, address a
+    WHERE c.address_id = a.address_id and a.postal_code = '35200'
+)
+LIMIT 10
+fetching all from: 
+SELECT r1.customer_id, r2.rdate FROM
+(
+    SELECT c.customer_id, date_part('month', r.rental_date) as rdate
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id and 
+        date_part('month', r.rental_date) = 11
+) r1
+JOIN
+(
+    SELECT c.customer_id, date_part('month', r.rental_date) as rdate
+    FROM customer c, rental r
+    WHERE c.customer_id = r.customer_id and 
+        date_part('month', r.rental_date) != 10
+) r2
+ON r1.customer_id = r2.customer_id
+fetching all from: 
+SELECT MAX(r1.nbLoc) FROM
+(
+    SELECT r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r
+    GROUP BY rdate   
+) r1
+fetching all from: 
+SELECT r1.customer_id, MAX(r1.nbLoc) as record FROM
+(
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+) r1
+GROUP BY r1.customer_id
+ORDER BY record desc
+LIMIT 1
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc = (SELECT MAX(r1.nbLoc) FROM r1)
+fetching all from: 
+WITH r1 as (
+    SELECT c.customer_id, r.rental_date::timestamp::date as rdate, COUNT(DISTINCT r.rental_id) as nbLoc
+    FROM rental r, customer c
+    WHERE r.customer_id = c.customer_id
+    GROUP BY c.customer_id, rdate   
+)
+SELECT r1.customer_id, r1.nbLoc 
+FROM r1
+WHERE r1.nbLoc >= ALL(SELECT r1.nbLoc FROM r1 )
+fetching one from: 
+SELECT VERSION();
+('PostgreSQL 11.1 (Ubuntu 11.1-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0, 64-bit',)
+fetching all from: 
+SELECT DISTINCT a.address_id 
+FROM address a, city cty, country c 
+WHERE a.city_id = cty.city_id and c.country_id = cty.country_id and upper(c.country) = upper('france')
