@@ -149,9 +149,8 @@
     \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
     % Document parameters
     % Document title
-    \title{TP01-Révisions SQL}
+    \title{TP01 - Révision SQL}
     \author{Minh-Hoang DANG}
-    
     
     
     
@@ -302,76 +301,89 @@ locations - La gestion des clients : clients, paiements
 
 On n'utilisera pas l'intégralité de la base à chaque TP.
 
-\hypertarget{exercices-ldd}{%
+   \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{set} \PY{n}{datestyle} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{european}\PY{l+s+s1}{\PYZsq{}}
+        
+        \PY{c+c1}{\PYZhy{}\PYZhy{} PostGre SQL Kernel pour Jupyter}
+        \PY{c+c1}{\PYZhy{}\PYZhy{} pip3 install git+https://github.com/bgschiller/postgres\PYZus{}kernel.git}
+        \PY{c+c1}{\PYZhy{}\PYZhy{} connection: host=\PYZsq{}localhost\PYZsq{} dbname=\PYZsq{}Sakila\PYZsq{} user=\PYZsq{}postgres\PYZsq{} password=\PYZsq{}postgres\PYZsq{}}
+\end{Verbatim}
+
+    \hypertarget{exercices-ldd}{%
 \section{Exercices LDD}\label{exercices-ldd}}
 
 \hypertarget{exercice-1.}{%
 \subsubsection{Exercice 1.}\label{exercice-1.}}
 
 Créez la base de données sous Postgresql. Pour utiliser postgreSQL vous
-disposez de l`interface pgadmin. Le mot de passe en salle de TP est «
-pgAdmin ». \#\#\# Exercice 2. Ouvrez le fichier base-schema et ajoutez
-toutes les contraintes de clés primaires, uniques et étrangères à la
-main. Vous pouvez également tester ces contraintes en insérant des
-enregistrements incorrects. Pensez à indiquer les actions à effectuer en
-cas de modification ou de suppression (ON DELETE, ON UPDATE). Une fois
-que cela est fait, vous pouvez importer les données du fichier
-base-data.sql.
+disposez de l`interface pgadmin. Le mot de passe en salle de TP est
+«pgAdmin».
+
+\hypertarget{exercice-2.}{%
+\subsubsection{Exercice 2.}\label{exercice-2.}}
+
+Ouvrez le fichier base-schema et ajoutez toutes les contraintes de clés
+primaires, uniques et étrangères à la main. Vous pouvez également tester
+ces contraintes en insérant des enregistrements incorrects. Pensez à
+indiquer les actions à effectuer en cas de modification ou de
+suppression (ON DELETE, ON UPDATE). Une fois que cela est fait, vous
+pouvez importer les données du fichier base-data.sql.
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZhy{}\PYZhy{} file: base\PYZhy{}constrain.sql}
+        \PY{k}{set} \PY{n}{datestyle} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{european}\PY{l+s+s1}{\PYZsq{}}
+        \PY{c+cm}{/*}
+        \PY{c+cm}{ALTER TABLE country ADD CONSTRAINT PK\PYZus{}COUNTRY PRIMARY KEY(country\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE city ADD CONSTRAINT PK\PYZus{}CITY PRIMARY KEY(city\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE address ADD CONSTRAINT PK\PYZus{}ADDRESS PRIMARY KEY(address\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE store ADD CONSTRAINT PK\PYZus{}STORE PRIMARY KEY(store\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE customer ADD CONSTRAINT PK\PYZus{}CUSTOMER PRIMARY KEY(customer\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE payment ADD CONSTRAINT PK\PYZus{}PAYMENT PRIMARY KEY(payment\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE rental ADD CONSTRAINT PK\PYZus{}RENTAL PRIMARY KEY(rental\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{country} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}COUNTRY} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{country\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{city} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}CITY} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{city\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{address} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}ADDRESS} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{address\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{store} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}STORE} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{store\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{customer} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}CUSTOMER} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{customer\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{payment} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}PAYMENT} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{payment\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{rental} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}RENTAL} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{rental\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE city ADD CONSTRAINT FK\PYZus{}CITY\PYZus{}COUNTRY FOREIGN KEY(country\PYZus{}id) REFERENCES}
+        \PY{c+cm}{country(country\PYZus{}id);}
         
+        \PY{c+cm}{ALTER TABLE address ADD CONSTRAINT FK\PYZus{}ADDRESS\PYZus{}CITY FOREIGN KEY(city\PYZus{}id) REFERENCES}
+        \PY{c+cm}{city(city\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{city} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}CITY\PYZus{}COUNTRY} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{country\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{country}\PY{p}{(}\PY{n}{country\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE staff ADD CONSTRAINT PK\PYZus{}STAFF PRIMARY KEY(staff\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{address} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}ADDRESS\PYZus{}CITY} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{city\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{city}\PY{p}{(}\PY{n}{city\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE store ADD CONSTRAINT FK\PYZus{}STORE\PYZus{}MANAGER FOREIGN KEY(manager\PYZus{}staff\PYZus{}id)}
+        \PY{c+cm}{REFERENCES staff(staff\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE store ADD CONSTRAINT FK\PYZus{}STORE\PYZus{}ADDRESS FOREIGN KEY(address\PYZus{}id) REFERENCES}
+        \PY{c+cm}{address(address\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{staff} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}STAFF} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{staff\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE staff ADD CONSTRAINT FK\PYZus{}STAFF\PYZus{}ADDRESS FOREIGN KEY(address\PYZus{}id) REFERENCES}
+        \PY{c+cm}{address(address\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE staff ADD CONSTRAINT FK\PYZus{}STAFF\PYZus{}STORE FOREIGN KEY(store\PYZus{}id) REFERENCES}
+        \PY{c+cm}{store(store\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{store} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}STORE\PYZus{}MANAGER} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{manager\PYZus{}staff\PYZus{}id}\PY{p}{)}
-        \PY{k}{REFERENCES} \PY{n}{staff}\PY{p}{(}\PY{n}{staff\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{store} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}STORE\PYZus{}ADDRESS} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{address\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{address}\PY{p}{(}\PY{n}{address\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE customer ADD CONSTRAINT FK\PYZus{}CUSTOMER\PYZus{}STORE FOREIGN KEY(store\PYZus{}id) REFERENCES}
+        \PY{c+cm}{store(store\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE customer ADD CONSTRAINT FK\PYZus{}CUSTOMER\PYZus{}ADDRESS FOREIGN KEY(address\PYZus{}id)}
+        \PY{c+cm}{REFERENCES address(address\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{staff} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}STAFF\PYZus{}ADDRESS} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{address\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{address}\PY{p}{(}\PY{n}{address\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{staff} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}STAFF\PYZus{}STORE} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{store\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{store}\PY{p}{(}\PY{n}{store\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE inventory ADD CONSTRAINT PK\PYZus{}INVENTORY PRIMARY KEY(inventory\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE inventory ADD CONSTRAINT FK\PYZus{}INVENTORY\PYZus{}STORE FOREIGN KEY(store\PYZus{}id) REFERENCES}
+        \PY{c+cm}{store(store\PYZus{}id);}
+        \PY{c+cm}{\PYZhy{}\PYZhy{}ALTER TABLE inventory ADD CONSTRAINT FK\PYZus{}INVENTORY\PYZus{}RENTAL FOREIGN KEY(film\PYZus{}id)}
+        \PY{c+cm}{REFERENCES rental(rental\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{customer} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}CUSTOMER\PYZus{}STORE} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{store\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{store}\PY{p}{(}\PY{n}{store\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{customer} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}CUSTOMER\PYZus{}ADDRESS} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{address\PYZus{}id}\PY{p}{)}
-        \PY{k}{REFERENCES} \PY{n}{address}\PY{p}{(}\PY{n}{address\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE payment ADD CONSTRAINT FK\PYZus{}PAYMENT\PYZus{}CUSTOMER FOREIGN KEY(customer\PYZus{}id)}
+        \PY{c+cm}{REFERENCES customer(customer\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE payment ADD CONSTRAINT FK\PYZus{}PAYMENT\PYZus{}STAFF FOREIGN KEY(staff\PYZus{}id) REFERENCES}
+        \PY{c+cm}{staff(staff\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE payment ADD CONSTRAINT FK\PYZus{}PAYMENT\PYZus{}RENTAL FOREIGN KEY(rental\PYZus{}id) REFERENCES}
+        \PY{c+cm}{rental(rental\PYZus{}id);}
         
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{inventory} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{PK\PYZus{}INVENTORY} \PY{k}{PRIMARY} \PY{k}{KEY}\PY{p}{(}\PY{n}{inventory\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{inventory} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}INVENTORY\PYZus{}STORE} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{store\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{store}\PY{p}{(}\PY{n}{store\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{c+c1}{\PYZhy{}\PYZhy{}ALTER TABLE inventory ADD CONSTRAINT FK\PYZus{}INVENTORY\PYZus{}RENTAL FOREIGN KEY(film\PYZus{}id)}
-        \PY{k}{REFERENCES} \PY{n}{rental}\PY{p}{(}\PY{n}{rental\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{payment} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}PAYMENT\PYZus{}CUSTOMER} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{customer\PYZus{}id}\PY{p}{)}
-        \PY{k}{REFERENCES} \PY{n}{customer}\PY{p}{(}\PY{n}{customer\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{payment} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}PAYMENT\PYZus{}STAFF} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{staff\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{staff}\PY{p}{(}\PY{n}{staff\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{payment} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}PAYMENT\PYZus{}RENTAL} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{rental}\PY{p}{(}\PY{n}{rental\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{rental} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}RENTAL\PYZus{}INVENTORY} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{inventory\PYZus{}id}\PY{p}{)}
-        \PY{k}{REFERENCES} \PY{n}{inventory}\PY{p}{(}\PY{n}{inventory\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{rental} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}RENTAL\PYZus{}CUSTOMER} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{customer\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{customer}\PY{p}{(}\PY{n}{customer\PYZus{}id}\PY{p}{)}\PY{p}{;}
-        \PY{k}{ALTER} \PY{k}{TABLE} \PY{n}{rental} \PY{k}{ADD} \PY{k}{CONSTRAINT} \PY{n}{FK\PYZus{}RENTAL\PYZus{}STAFF} \PY{k}{FOREIGN} \PY{k}{KEY}\PY{p}{(}\PY{n}{staff\PYZus{}id}\PY{p}{)} \PY{k}{REFERENCES}
-        \PY{n}{staff}\PY{p}{(}\PY{n}{staff\PYZus{}id}\PY{p}{)}\PY{p}{;}
+        \PY{c+cm}{ALTER TABLE rental ADD CONSTRAINT FK\PYZus{}RENTAL\PYZus{}INVENTORY FOREIGN KEY(inventory\PYZus{}id)}
+        \PY{c+cm}{REFERENCES inventory(inventory\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE rental ADD CONSTRAINT FK\PYZus{}RENTAL\PYZus{}CUSTOMER FOREIGN KEY(customer\PYZus{}id) REFERENCES}
+        \PY{c+cm}{customer(customer\PYZus{}id);}
+        \PY{c+cm}{ALTER TABLE rental ADD CONSTRAINT FK\PYZus{}RENTAL\PYZus{}STAFF FOREIGN KEY(staff\PYZus{}id) REFERENCES}
+        \PY{c+cm}{staff(staff\PYZus{}id);}
+        \PY{c+cm}{*/}
 \end{Verbatim}
 
     \hypertarget{utiliser-les-dates}{%
@@ -383,15 +395,7 @@ peut-être vous servir à un moment dans le
 TP.}\label{exercice-3.-tester-les-requuxeates-suivantes-qui-pourront-peut-uxeatre-vous-servir-uxe0-un-moment-dans-le-tp.}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{set} \PY{n}{datestyle} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{european}\PY{l+s+s1}{\PYZsq{}}
-        
-        \PY{c+c1}{\PYZhy{}\PYZhy{} PostGre SQL Kernel pour Jupyter}
-        \PY{c+c1}{\PYZhy{}\PYZhy{} pip3 install git+https://github.com/bgschiller/postgres\PYZus{}kernel.git}
-        \PY{c+c1}{\PYZhy{}\PYZhy{} connection: host=\PYZsq{}localhost\PYZsq{} dbname=\PYZsq{}Sakila\PYZsq{} user=\PYZsq{}postgres\PYZsq{} password=\PYZsq{}postgres\PYZsq{}}
-\end{Verbatim}
-
-   \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{SELECT} \PY{n+nb}{date} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2001\PYZhy{}10\PYZhy{}01}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZhy{}} \PY{n+nb}{date} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2001\PYZhy{}09\PYZhy{}28}\PY{l+s+s1}{\PYZsq{}}\PY{p}{;}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{SELECT} \PY{n+nb}{date} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2001\PYZhy{}10\PYZhy{}01}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZhy{}} \PY{n+nb}{date} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2001\PYZhy{}09\PYZhy{}28}\PY{l+s+s1}{\PYZsq{}}\PY{p}{;}
         \PY{k}{SELECT} \PY{n+nb}{timestamp} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2001\PYZhy{}09\PYZhy{}28 01:00}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{interval} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{18 hours}\PY{l+s+s1}{\PYZsq{}}\PY{p}{;}
         \PY{k}{SELECT} \PY{n}{age}\PY{p}{(}\PY{n+nb}{timestamp} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2001\PYZhy{}04\PYZhy{}10}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{timestamp} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1957\PYZhy{}06\PYZhy{}13}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
         \PY{k}{SELECT} \PY{n}{age}\PY{p}{(}\PY{n+nb}{timestamp} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1998\PYZhy{}06\PYZhy{}11}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
@@ -399,12 +403,17 @@ TP.}\label{exercice-3.-tester-les-requuxeates-suivantes-qui-pourront-peut-uxeatr
         \PY{k}{SELECT} \PY{n}{date\PYZus{}trunc}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hour}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{timestamp} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2001\PYZhy{}02\PYZhy{}16 20:38:40}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-date_trunc
--------------------
-2001-02-16 20:00:00
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+1 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{l}
+\toprule
+ date\_trunc          \\
+\midrule
+ 2001-02-16 20:00:00 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{requuxeates-sql}{%
@@ -420,27 +429,32 @@ montant de paiement compris entre 1 et 2
 euros.}\label{exercice-4.-identifiant-de-tous-les-clients-ayant-un-montant-de-paiement-compris-entre-1-et-2-euros.}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{p}\PY{l+m+mf}{.}\PY{n}{amount}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{p}\PY{l+m+mf}{.}\PY{n}{amount}
         \PY{k}{FROM} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{payment} \PY{n}{p}
         \PY{k}{WHERE} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{p}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{k}{and} \PY{n}{p}\PY{l+m+mf}{.}\PY{n}{amount} \PY{k}{between} \PY{l+m+mf}{1} \PY{k}{and} \PY{l+m+mf}{2}
         \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-first_name    last_name      amount
-------------  -----------  --------
-TED           BREAUX           1.99
-GEORGIA       JACOBS           1.99
-CAROL         GARCIA           1.99
-NINA          SOTO             1.99
-PEGGY         MYERS            1.99
-NATHANIEL     ADAM             1.99
-NICHOLAS      BARFIELD         1.99
-PETER         MENARD           1.99
-VIOLA         HANSON           1.99
-DORIS         REED             1.99
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{llr}
+\toprule
+ first\_name   & last\_name   &   amount \\
+\midrule
+ TED          & BREAUX      &     1.99 \\
+ GEORGIA      & JACOBS      &     1.99 \\
+ CAROL        & GARCIA      &     1.99 \\
+ NINA         & SOTO        &     1.99 \\
+ PEGGY        & MYERS       &     1.99 \\
+ NATHANIEL    & ADAM        &     1.99 \\
+ NICHOLAS     & BARFIELD    &     1.99 \\
+ PETER        & MENARD      &     1.99 \\
+ VIOLA        & HANSON      &     1.99 \\
+ DORIS        & REED        &     1.99 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-5.-locations-tous-les-attributs-qui-ont-uxe9tuxe9-retournuxe9es-moins-de-24h-apruxe8s-leur-emprunt}{%
@@ -449,27 +463,32 @@ retournées moins de 24h après leur
 emprunt}\label{exercice-5.-locations-tous-les-attributs-qui-ont-uxe9tuxe9-retournuxe9es-moins-de-24h-apruxe8s-leur-emprunt}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{o}{*}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{o}{*}
         \PY{k}{FROM} \PY{n}{rental} \PY{n}{r}
         \PY{k}{WHERE} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{return\PYZus{}date} \PY{o}{\PYZlt{}} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date} \PY{o}{+} \PY{n+nb}{interval} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{24 hours}\PY{l+s+s1}{\PYZsq{}}
         \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  rental_id  rental_date            inventory_id    customer_id  return_date            staff_id
------------  -------------------  --------------  -------------  -------------------  ----------
-       7188  2005-07-27 08:32:08            2199            259  2005-07-28 08:02:08           1
-       7933  2005-07-28 12:27:27            3175            297  2005-07-29 10:34:27           2
-      11923  2005-08-17 16:21:47            1907             72  2005-08-18 14:26:47           2
-       9004  2005-07-30 05:04:27            3775            178  2005-07-31 00:49:27           1
-      12843  2005-08-19 01:58:54            3279            128  2005-08-20 00:20:54           2
-      15667  2005-08-23 09:02:03            1302             73  2005-08-24 05:47:03           1
-      11270  2005-08-02 14:18:07            1882            418  2005-08-03 08:20:07           1
-       5360  2005-07-09 18:14:03             679            562  2005-07-10 15:17:03           2
-       3746  2005-07-06 12:10:51            3387            424  2005-07-07 11:36:51           2
-      11197  2005-08-02 11:45:07            3041            122  2005-08-03 09:07:07           1
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rlrrlr}
+\toprule
+   rental\_id & rental\_date         &   inventory\_id &   customer\_id & return\_date         &   staff\_id \\
+\midrule
+        7188 & 2005-07-27 08:32:08 &           2199 &           259 & 2005-07-28 08:02:08 &          1 \\
+        7933 & 2005-07-28 12:27:27 &           3175 &           297 & 2005-07-29 10:34:27 &          2 \\
+       11923 & 2005-08-17 16:21:47 &           1907 &            72 & 2005-08-18 14:26:47 &          2 \\
+        9004 & 2005-07-30 05:04:27 &           3775 &           178 & 2005-07-31 00:49:27 &          1 \\
+       12843 & 2005-08-19 01:58:54 &           3279 &           128 & 2005-08-20 00:20:54 &          2 \\
+       15667 & 2005-08-23 09:02:03 &           1302 &            73 & 2005-08-24 05:47:03 &          1 \\
+       11270 & 2005-08-02 14:18:07 &           1882 &           418 & 2005-08-03 08:20:07 &          1 \\
+        5360 & 2005-07-09 18:14:03 &            679 &           562 & 2005-07-10 15:17:03 &          2 \\
+        3746 & 2005-07-06 12:10:51 &           3387 &           424 & 2005-07-07 11:36:51 &          2 \\
+       11197 & 2005-08-02 11:45:07 &           3041 &           122 & 2005-08-03 09:07:07 &          1 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-6.-locations-tous-les-attributs-qui-ont-uxe9tuxe9-faites-entre-23h-et-minuit-exclus}{%
@@ -478,27 +497,32 @@ faites entre 23h et minuit
 (exclus)}\label{exercice-6.-locations-tous-les-attributs-qui-ont-uxe9tuxe9-faites-entre-23h-et-minuit-exclus}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{SELECT} \PY{o}{*}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{SELECT} \PY{o}{*}
         \PY{k}{FROM} \PY{n}{rental} \PY{n}{r}
         \PY{k}{WHERE} \PY{n}{date\PYZus{}part}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hour}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{p}{)} \PY{k}{between} \PY{l+m+mf}{23} \PY{k}{AND} \PY{l+m+mf}{24}
         \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  rental_id  rental_date            inventory_id    customer_id  return_date            staff_id
------------  -------------------  --------------  -------------  -------------------  ----------
-          3  2005-05-24 23:03:39            1711            408  2005-06-01 22:12:39           1
-          4  2005-05-24 23:04:41            2452            333  2005-06-03 01:43:41           2
-          5  2005-05-24 23:05:21            2079            222  2005-06-02 04:33:21           1
-          6  2005-05-24 23:08:07            2792            549  2005-05-27 01:32:07           1
-          7  2005-05-24 23:11:53            3995            269  2005-05-29 20:34:53           2
-          8  2005-05-24 23:31:46            2346            239  2005-05-27 23:33:46           2
-        139  2005-05-25 23:00:21             327            257  2005-05-29 17:12:21           1
-        140  2005-05-25 23:34:22             655            354  2005-05-27 01:10:22           1
-        141  2005-05-25 23:34:53             811             89  2005-06-02 01:57:53           1
-        142  2005-05-25 23:43:47            4407            472  2005-05-29 00:46:47           2
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rlrrlr}
+\toprule
+   rental\_id & rental\_date         &   inventory\_id &   customer\_id & return\_date         &   staff\_id \\
+\midrule
+           3 & 2005-05-24 23:03:39 &           1711 &           408 & 2005-06-01 22:12:39 &          1 \\
+           4 & 2005-05-24 23:04:41 &           2452 &           333 & 2005-06-03 01:43:41 &          2 \\
+           5 & 2005-05-24 23:05:21 &           2079 &           222 & 2005-06-02 04:33:21 &          1 \\
+           6 & 2005-05-24 23:08:07 &           2792 &           549 & 2005-05-27 01:32:07 &          1 \\
+           7 & 2005-05-24 23:11:53 &           3995 &           269 & 2005-05-29 20:34:53 &          2 \\
+           8 & 2005-05-24 23:31:46 &           2346 &           239 & 2005-05-27 23:33:46 &          2 \\
+         139 & 2005-05-25 23:00:21 &            327 &           257 & 2005-05-29 17:12:21 &          1 \\
+         140 & 2005-05-25 23:34:22 &            655 &           354 & 2005-05-27 01:10:22 &          1 \\
+         141 & 2005-05-25 23:34:53 &            811 &            89 & 2005-06-02 01:57:53 &          1 \\
+         142 & 2005-05-25 23:43:47 &           4407 &           472 & 2005-05-29 00:46:47 &          2 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-7.-pruxe9nom-et-nom-des-clients-dont-le-code-postal-commence-par-47}{%
@@ -507,37 +531,42 @@ commence par
 47}\label{exercice-7.-pruxe9nom-et-nom-des-clients-dont-le-code-postal-commence-par-47}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}
         \PY{k}{FROM} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{address} \PY{n}{a}
         \PY{k}{WHERE} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{address\PYZus{}id} \PY{o}{=} \PY{n}{a}\PY{l+m+mf}{.}\PY{n}{address\PYZus{}id} \PY{k}{and} \PY{n}{a}\PY{l+m+mf}{.}\PY{n}{postal\PYZus{}code} \PY{o}{\PYZti{}*} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{47.*}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-first_name    last_name
-------------  ------------
-PAMELA        BAKER
-BERNICE       WILLIS
-MARION        SNYDER
-STACY         CUNNINGHAM
-HOLLY         FOX
-AGNES         BISHOP
-COLLEEN       BURTON
-TERRY         CARLSON
-DAVID         ROYAL
-KENNETH       GOODEN
-NATHAN        RUNYON
-KYLE          SPURLOCK
-TROY          QUIGLEY
-LLOYD         DOWD
-DEREK         BLAKELY
-MILTON        HOWLAND
-ELMER         NOE
-MITCHELL      WESTMORELAND
-FELIX         GAFFNEY
-MORRIS        MCCARTER
-TRACY         HERRMANN
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+21 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{ll}
+\toprule
+ first\_name   & last\_name    \\
+\midrule
+ PAMELA       & BAKER        \\
+ BERNICE      & WILLIS       \\
+ MARION       & SNYDER       \\
+ STACY        & CUNNINGHAM   \\
+ HOLLY        & FOX          \\
+ AGNES        & BISHOP       \\
+ COLLEEN      & BURTON       \\
+ TERRY        & CARLSON      \\
+ DAVID        & ROYAL        \\
+ KENNETH      & GOODEN       \\
+ NATHAN       & RUNYON       \\
+ KYLE         & SPURLOCK     \\
+ TROY         & QUIGLEY      \\
+ LLOYD        & DOWD         \\
+ DEREK        & BLAKELY      \\
+ MILTON       & HOWLAND      \\
+ ELMER        & NOE          \\
+ MITCHELL     & WESTMORELAND \\
+ FELIX        & GAFFNEY      \\
+ MORRIS       & MCCARTER     \\
+ TRACY        & HERRMANN     \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-8.-tous-les-identifiants-distincts-dadresse-en-france}{%
@@ -545,21 +574,26 @@ TRACY         HERRMANN
 France}\label{exercice-8.-tous-les-identifiants-distincts-dadresse-en-france}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}23}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{n}{a}\PY{l+m+mf}{.}\PY{n}{address\PYZus{}id}
-         \PY{k}{FROM} \PY{n}{address} \PY{n}{a}\PY{p}{,} \PY{n}{city} \PY{n}{cty}\PY{p}{,} \PY{n}{country} \PY{n}{c}
-         \PY{k}{WHERE} \PY{n}{a}\PY{l+m+mf}{.}\PY{n}{city\PYZus{}id} \PY{o}{=} \PY{n}{cty}\PY{l+m+mf}{.}\PY{n}{city\PYZus{}id} \PY{k}{and} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{country\PYZus{}id} \PY{o}{=} \PY{n}{cty}\PY{l+m+mf}{.}\PY{n}{country\PYZus{}id} \PY{k}{and} \PY{n}{upper}\PY{p}{(}\PY{n}{c}\PY{l+m+mf}{.}\PY{n}{country}\PY{p}{)} \PY{o}{=}
-         \PY{n}{upper}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{france}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{n}{a}\PY{l+m+mf}{.}\PY{n}{address\PYZus{}id}
+        \PY{k}{FROM} \PY{n}{address} \PY{n}{a}\PY{p}{,} \PY{n}{city} \PY{n}{cty}\PY{p}{,} \PY{n}{country} \PY{n}{c}
+        \PY{k}{WHERE} \PY{n}{a}\PY{l+m+mf}{.}\PY{n}{city\PYZus{}id} \PY{o}{=} \PY{n}{cty}\PY{l+m+mf}{.}\PY{n}{city\PYZus{}id} \PY{k}{and} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{country\PYZus{}id} \PY{o}{=} \PY{n}{cty}\PY{l+m+mf}{.}\PY{n}{country\PYZus{}id} \PY{k}{and} \PY{n}{upper}\PY{p}{(}\PY{n}{c}\PY{l+m+mf}{.}\PY{n}{country}\PY{p}{)} \PY{o}{=}
+        \PY{n}{upper}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{france}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  address_id
-------------
-          39
-         108
-         166
-         407
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+4 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{r}
+\toprule
+   address\_id \\
+\midrule
+           39 \\
+          108 \\
+          166 \\
+          407 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-9.-identifiant-des-films-de-linventaire-qui-nont-jamais-uxe9tuxe9-louuxe9s}{%
@@ -568,59 +602,66 @@ n'ont jamais été
 loués}\label{exercice-9.-identifiant-des-films-de-linventaire-qui-nont-jamais-uxe9tuxe9-louuxe9s}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{SELECT} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id}\PY{p}{,} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{film\PYZus{}id}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{SELECT} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id}\PY{p}{,} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{film\PYZus{}id}
         \PY{k}{FROM} \PY{n}{inventory} \PY{n}{i}
         \PY{k}{WHERE} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{k}{NOT} \PY{k}{IN} \PY{p}{(}\PY{k}{SELECT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{k}{FROM} \PY{n}{rental} \PY{n}{r} \PY{p}{)}\PY{p}{;}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  inventory_id    film_id
---------------  ---------
-             5          1
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+1 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rr}
+\toprule
+   inventory\_id &   film\_id \\
+\midrule
+              5 &         1 \\
+\bottomrule
+\end{tabular}
 
     
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id}
-        \PY{k}{FROM} \PY{n}{rental} \PY{n}{r}
-        \PY{k}{WHERE} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{o}{=} \PY{l+m+mf}{5}\PY{p}{;}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{SELECT} \PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id}
+         \PY{k}{FROM} \PY{n}{rental} \PY{n}{r}
+         \PY{k}{WHERE} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{o}{=} \PY{l+m+mf}{5}\PY{p}{;}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-inventory_id
---------------
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+0 row(s) returned.
+    \end{Verbatim}
 
-    
     \hypertarget{exercice-10.-identifiant-des-films-et-nombre-de-fois-quils-ont-uxe9tuxe9-louuxe9s}{%
 \subsubsection{Exercice 10. Identifiant des films et nombre de fois
 qu'ils ont été
 loués}\label{exercice-10.-identifiant-des-films-et-nombre-de-fois-quils-ont-uxe9tuxe9-louuxe9s}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{SELECT} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{film\PYZus{}id}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{SELECT} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{film\PYZus{}id}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)}
          \PY{k}{FROM} \PY{n}{inventory} \PY{n}{i}\PY{p}{,} \PY{n}{rental} \PY{n}{r}
          \PY{k}{WHERE} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{o}{=} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{k}{GROUP} \PY{k}{BY}\PY{p}{(}\PY{n}{i}\PY{l+m+mf}{.}\PY{n}{film\PYZus{}id}\PY{p}{)}
          \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  film_id    count
----------  -------
-      652       14
-      273       25
-       51       23
-      951       28
-       70       17
-      839        7
-      350       20
-      758        8
-      539       10
-      278        7
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rr}
+\toprule
+   film\_id &   count \\
+\midrule
+       652 &      14 \\
+       273 &      25 \\
+        51 &      23 \\
+       951 &      28 \\
+        70 &      17 \\
+       839 &       7 \\
+       350 &      20 \\
+       758 &       8 \\
+       539 &      10 \\
+       278 &       7 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-11.-pruxe9nom-nom-et-nombre-de-locations-par-client}{%
@@ -628,28 +669,33 @@ loués}\label{exercice-10.-identifiant-des-films-et-nombre-de-fois-quils-ont-uxe
 client}\label{exercice-11.-pruxe9nom-nom-et-nombre-de-locations-par-client}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)}
          \PY{k}{FROM} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{rental} \PY{n}{r}
          \PY{k}{WHERE} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}
          \PY{k}{GROUP} \PY{k}{BY} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}
          \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-first_name    last_name      count
-------------  -----------  -------
-AARON         SELBY             24
-ADAM          GOOCH             22
-ADRIAN        CLARY             19
-AGNES         BISHOP            23
-ALAN          KAHN              26
-ALBERT        CROUSE            23
-ALBERTO       HENNING           21
-ALEX          GRESHAM           33
-ALEXANDER     FENNELL           36
-ALFRED        CASILLAS          26
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{llr}
+\toprule
+ first\_name   & last\_name   &   count \\
+\midrule
+ AARON        & SELBY       &      24 \\
+ ADAM         & GOOCH       &      22 \\
+ ADRIAN       & CLARY       &      19 \\
+ AGNES        & BISHOP      &      23 \\
+ ALAN         & KAHN        &      26 \\
+ ALBERT       & CROUSE      &      23 \\
+ ALBERTO      & HENNING     &      21 \\
+ ALEX         & GRESHAM     &      33 \\
+ ALEXANDER    & FENNELL     &      36 \\
+ ALFRED       & CASILLAS    &      26 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-12.-nombre-de-films-distincts-louuxe9s-par-une-personne-habitant-en-allemagne}{%
@@ -658,19 +704,24 @@ personne habitant en
 Allemagne}\label{exercice-12.-nombre-de-films-distincts-louuxe9s-par-une-personne-habitant-en-allemagne}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{k}{SELECT} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{film\PYZus{}id}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{SELECT} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{film\PYZus{}id}\PY{p}{)}
          \PY{k}{FROM} \PY{n}{inventory} \PY{n}{i}\PY{p}{,} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{rental} \PY{n}{r}\PY{p}{,} \PY{n}{address} \PY{n}{a}\PY{p}{,} \PY{n}{country} \PY{n}{h}\PY{p}{,} \PY{n}{city} \PY{n}{cty}
          \PY{k}{WHERE} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{o}{=} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{k}{and} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{k}{and} \PY{n}{a}\PY{l+m+mf}{.}\PY{n}{city\PYZus{}id} \PY{o}{=}
          \PY{n}{cty}\PY{l+m+mf}{.}\PY{n}{city\PYZus{}id}
                  \PY{k}{and} \PY{n}{cty}\PY{l+m+mf}{.}\PY{n}{country\PYZus{}id} \PY{o}{=} \PY{n}{h}\PY{l+m+mf}{.}\PY{n}{country\PYZus{}id} \PY{k}{and} \PY{n}{upper}\PY{p}{(}\PY{n}{h}\PY{l+m+mf}{.}\PY{n}{country}\PY{p}{)} \PY{o}{=} \PY{n}{upper}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Germany}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  count
--------
-    958
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+1 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{r}
+\toprule
+   count \\
+\midrule
+     958 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-13.-identifiant-de-magasin-et-nombre-de-locations}{%
@@ -678,19 +729,24 @@ Allemagne}\label{exercice-12.-nombre-de-films-distincts-louuxe9s-par-une-personn
 locations}\label{exercice-13.-identifiant-de-magasin-et-nombre-de-locations}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{SELECT} \PY{n}{s}\PY{l+m+mf}{.}\PY{n}{store\PYZus{}id}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{SELECT} \PY{n}{s}\PY{l+m+mf}{.}\PY{n}{store\PYZus{}id}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)}
          \PY{k}{FROM} \PY{n}{store} \PY{n}{s}\PY{p}{,} \PY{n}{inventory} \PY{n}{i}\PY{p}{,} \PY{n}{rental} \PY{n}{r}
          \PY{k}{WHERE} \PY{n}{s}\PY{l+m+mf}{.}\PY{n}{store\PYZus{}id} \PY{o}{=} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{store\PYZus{}id} \PY{k}{AND} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id} \PY{o}{=} \PY{n}{i}\PY{l+m+mf}{.}\PY{n}{inventory\PYZus{}id}
          \PY{k}{GROUP} \PY{k}{BY} \PY{n}{s}\PY{l+m+mf}{.}\PY{n}{store\PYZus{}id}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  store_id    count
-----------  -------
-         1     7923
-         2     8121
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+2 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rr}
+\toprule
+   store\_id &   count \\
+\midrule
+          1 &    7923 \\
+          2 &    8121 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-14.-pruxe9nom-nom-montant-moyen-et-montant-total-duxe9pensuxe9-par-client}{%
@@ -699,28 +755,33 @@ dépensé par
 client}\label{exercice-14.-pruxe9nom-nom-montant-moyen-et-montant-total-duxe9pensuxe9-par-client}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{AVG}\PY{p}{(}\PY{n}{p}\PY{l+m+mf}{.}\PY{n}{amount}\PY{p}{)}\PY{p}{,} \PY{n}{SUM}\PY{p}{(}\PY{n}{p}\PY{l+m+mf}{.}\PY{n}{amount}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}15}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{AVG}\PY{p}{(}\PY{n}{p}\PY{l+m+mf}{.}\PY{n}{amount}\PY{p}{)}\PY{p}{,} \PY{n}{SUM}\PY{p}{(}\PY{n}{p}\PY{l+m+mf}{.}\PY{n}{amount}\PY{p}{)}
          \PY{k}{FROM} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{payment} \PY{n}{p}
          \PY{k}{WHERE} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{p}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}
          \PY{k}{GROUP} \PY{k}{BY} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}
          \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-first_name    last_name        avg     sum
-------------  -----------  -------  ------
-JONATHAN      SCARBOROUGH  4.04556   72.82
-TRACEY        BARRETT      4.39741  118.73
-RUSSELL       BRINSON      3.79556  136.64
-FRANKLIN      TROUTMAN     3.39909   74.78
-CASSANDRA     WALTERS      4.32333  129.7
-CECIL         VINES        4.45154  115.74
-JORDAN        ARCHULETA    4.42333  132.7
-THOMAS        GRIGSBY      4.23     105.75
-RUBY          WASHINGTON   3.95429  110.72
-STANLEY       SCROGGINS    4.65667  139.7
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{llrr}
+\toprule
+ first\_name   & last\_name   &     avg &    sum \\
+\midrule
+ JONATHAN     & SCARBOROUGH & 4.04556 &  72.82 \\
+ TRACEY       & BARRETT     & 4.39741 & 118.73 \\
+ RUSSELL      & BRINSON     & 3.79556 & 136.64 \\
+ FRANKLIN     & TROUTMAN    & 3.39909 &  74.78 \\
+ CASSANDRA    & WALTERS     & 4.32333 & 129.7  \\
+ CECIL        & VINES       & 4.45154 & 115.74 \\
+ JORDAN       & ARCHULETA   & 4.42333 & 132.7  \\
+ THOMAS       & GRIGSBY     & 4.23    & 105.75 \\
+ RUBY         & WASHINGTON  & 3.95429 & 110.72 \\
+ STANLEY      & SCROGGINS   & 4.65667 & 139.7  \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-15.-numuxe9ro-de-client-jour-et-nombre-de-location-pour-ce-jour-et-ce-client}{%
@@ -729,7 +790,7 @@ pour ce jour et ce
 client}\label{exercice-15.-numuxe9ro-de-client-jour-et-nombre-de-location-pour-ce-jour-et-ce-client}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{rdate}\PY{p}{,} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLocationClient}\PY{p}{,} \PY{n}{r2}\PY{l+m+mf}{.}\PY{n}{nbLocationJour} \PY{k}{FROM}
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{rdate}\PY{p}{,} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLocationClient}\PY{p}{,} \PY{n}{r2}\PY{l+m+mf}{.}\PY{n}{nbLocationJour} \PY{k}{FROM}
          \PY{p}{(}
              \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{o}{::}\PY{n+nb}{timestamp}\PY{o}{::}\PY{n+nb}{date} \PY{k}{as} \PY{n}{rdate}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT}
          \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{as} \PY{n}{nbLocationClient}
@@ -748,21 +809,26 @@ client}\label{exercice-15.-numuxe9ro-de-client-jour-et-nombre-de-location-pour-c
          \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  customer_id  rdate         nblocationclient    nblocationjour
--------------  ----------  ------------------  ----------------
-            1  2005-05-25                   1               137
-            1  2005-05-28                   1               196
-            1  2005-06-15                   3               348
-            1  2005-06-16                   1               324
-            1  2005-06-18                   2               344
-            1  2005-06-21                   1               275
-            1  2005-07-08                   2               512
-            1  2005-07-09                   2               513
-            1  2005-07-11                   1               461
-            1  2005-07-27                   1               649
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rlrr}
+\toprule
+   customer\_id & rdate      &   nblocationclient &   nblocationjour \\
+\midrule
+             1 & 2005-05-25 &                  1 &              137 \\
+             1 & 2005-05-28 &                  1 &              196 \\
+             1 & 2005-06-15 &                  3 &              348 \\
+             1 & 2005-06-16 &                  1 &              324 \\
+             1 & 2005-06-18 &                  2 &              344 \\
+             1 & 2005-06-21 &                  1 &              275 \\
+             1 & 2005-07-08 &                  2 &              512 \\
+             1 & 2005-07-09 &                  2 &              513 \\
+             1 & 2005-07-11 &                  1 &              461 \\
+             1 & 2005-07-27 &                  1 &              649 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-16.-pruxe9nom-et-nom-des-clients-ayant-effectuuxe9-strictement-moins-de-15-locations}{%
@@ -771,22 +837,27 @@ strictement moins de 15
 locations}\label{exercice-16.-pruxe9nom-et-nom-des-clients-ayant-effectuuxe9-strictement-moins-de-15-locations}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{as} \PY{n}{nbLocations}
+{\color{incolor}In [{\color{incolor}17}]:} \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{as} \PY{n}{nbLocations}
          \PY{k}{FROM} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{rental} \PY{n}{r}
          \PY{k}{WHERE} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}
          \PY{k}{GROUP} \PY{k}{BY} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{first\PYZus{}name}\PY{p}{,} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{last\PYZus{}name}
          \PY{k}{HAVING} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{l+m+mf}{15}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-first_name    last_name      nblocations
-------------  -----------  -------------
-BRIAN         WYMAN                   12
-KATHERINE     RIVERA                  14
-LEONA         OBRIEN                  14
-TIFFANY       JORDAN                  14
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+4 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{llr}
+\toprule
+ first\_name   & last\_name   &   nblocations \\
+\midrule
+ BRIAN        & WYMAN       &            12 \\
+ KATHERINE    & RIVERA      &            14 \\
+ LEONA        & OBRIEN      &            14 \\
+ TIFFANY      & JORDAN      &            14 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-17.-nombre-de-clients-qui-ont-effectuuxe9-une-location-le-30-juillet-2005-ou-habitent-au-code-postal-35200-ne-pas-utiliser-or}{%
@@ -796,7 +867,7 @@ utiliser
 OR)}\label{exercice-17.-nombre-de-clients-qui-ont-effectuuxe9-une-location-le-30-juillet-2005-ou-habitent-au-code-postal-35200-ne-pas-utiliser-or}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}17}]:} \PY{p}{(}
+{\color{incolor}In [{\color{incolor}18}]:} \PY{p}{(}
              \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}
              \PY{k}{FROM} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{rental} \PY{n}{r}
              \PY{k}{WHERE} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{o}{::}\PY{n+nb}{timestamp}\PY{o}{::}\PY{n+nb}{date} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005\PYZhy{}07\PYZhy{}30}\PY{l+s+s1}{\PYZsq{}}\PY{o}{::}\PY{n+nb}{date}
@@ -810,21 +881,26 @@ OR)}\label{exercice-17.-nombre-de-clients-qui-ont-effectuuxe9-une-location-le-30
          \PY{k}{LIMIT} \PY{l+m+mf}{10}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  customer_id
--------------
-          176
-          576
-          292
-          161
-          528
-          524
-          360
-           99
-          384
-          188
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+10 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{r}
+\toprule
+   customer\_id \\
+\midrule
+           176 \\
+           576 \\
+           292 \\
+           161 \\
+           528 \\
+           524 \\
+           360 \\
+            99 \\
+           384 \\
+           188 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-18.-identifiant-des-clients-ayant-effectuuxe9-une-location-le-11-dun-mois-quelconque-mais-pas-le-10-dun-mois-quelconque}{%
@@ -833,7 +909,7 @@ location le 11 d'un mois quelconque mais pas le 10 d'un mois
 quelconque}\label{exercice-18.-identifiant-des-clients-ayant-effectuuxe9-une-location-le-11-dun-mois-quelconque-mais-pas-le-10-dun-mois-quelconque}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}18}]:} \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r2}\PY{l+m+mf}{.}\PY{n}{rdate} \PY{k}{FROM}
+{\color{incolor}In [{\color{incolor}19}]:} \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r2}\PY{l+m+mf}{.}\PY{n}{rdate} \PY{k}{FROM}
          \PY{p}{(}
              \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{date\PYZus{}part}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{month}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{p}{)} \PY{k}{as} \PY{n}{rdate}
              \PY{k}{FROM} \PY{n}{customer} \PY{n}{c}\PY{p}{,} \PY{n}{rental} \PY{n}{r}
@@ -850,19 +926,16 @@ quelconque}\label{exercice-18.-identifiant-des-clients-ayant-effectuuxe9-une-loc
          \PY{k}{ON} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{r2}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-customer_id    rdate
--------------  -------
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+0 row(s) returned.
+    \end{Verbatim}
 
-    
     \hypertarget{exercice-19.-nombre-maximum-de-location-en-une-journuxe9e}{%
 \subsubsection{Exercice 19. Nombre maximum de location en une
 journée}\label{exercice-19.-nombre-maximum-de-location-en-une-journuxe9e}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}19}]:} \PY{k}{SELECT} \PY{n}{MAX}\PY{p}{(}\PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}\PY{p}{)} \PY{k}{FROM}
+{\color{incolor}In [{\color{incolor}20}]:} \PY{k}{SELECT} \PY{n}{MAX}\PY{p}{(}\PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}\PY{p}{)} \PY{k}{FROM}
          \PY{p}{(}
              \PY{k}{SELECT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{o}{::}\PY{n+nb}{timestamp}\PY{o}{::}\PY{n+nb}{date} \PY{k}{as} \PY{n}{rdate}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{as} \PY{n}{nbLoc}
              \PY{k}{FROM} \PY{n}{rental} \PY{n}{r}
@@ -870,12 +943,17 @@ journée}\label{exercice-19.-nombre-maximum-de-location-en-une-journuxe9e}}
          \PY{p}{)} \PY{n}{r1}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  max
------
-  679
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+1 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{r}
+\toprule
+   max \\
+\midrule
+   679 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{exercice-20.-numuxe9ro-du-client-ayant-effectuuxe9-le-plus-de-locations-en-une-journuxe9e.-proposer-au-moins-3-solutions}{%
@@ -887,7 +965,7 @@ locations en une journée. Proposer au moins 3 solutions
 \paragraph{Solution 1:}\label{solution-1}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}20}]:} \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{MAX}\PY{p}{(}\PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}\PY{p}{)} \PY{k}{as} \PY{n+nb}{record} \PY{k}{FROM}
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{MAX}\PY{p}{(}\PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}\PY{p}{)} \PY{k}{as} \PY{n+nb}{record} \PY{k}{FROM}
          \PY{p}{(}
              \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{o}{::}\PY{n+nb}{timestamp}\PY{o}{::}\PY{n+nb}{date} \PY{k}{as} \PY{n}{rdate}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT}
          \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{as} \PY{n}{nbLoc}
@@ -900,40 +978,21 @@ locations en une journée. Proposer au moins 3 solutions
          \PY{k}{LIMIT} \PY{l+m+mf}{1}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  customer_id    record
--------------  --------
-          563         7
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+1 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rr}
+\toprule
+   customer\_id &   record \\
+\midrule
+           563 &        7 \\
+\bottomrule
+\end{tabular}
 
     
     \hypertarget{solution-2}{%
 \paragraph{Solution 2:}\label{solution-2}}
-
-   \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
-{\color{incolor}In [{\color{incolor}21}]:} \PY{k}{WITH} \PY{n}{r1} \PY{k}{as} \PY{p}{(}
-             \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{o}{::}\PY{n+nb}{timestamp}\PY{o}{::}\PY{n+nb}{date} \PY{k}{as} \PY{n}{rdate}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT}
-         \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{as} \PY{n}{nbLoc}
-             \PY{k}{FROM} \PY{n}{rental} \PY{n}{r}\PY{p}{,} \PY{n}{customer} \PY{n}{c}
-             \PY{k}{WHERE} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}
-             \PY{k}{GROUP} \PY{k}{BY} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{rdate}
-         \PY{p}{)}
-         \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}
-         \PY{k}{FROM} \PY{n}{r1}
-         \PY{k}{WHERE} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc} \PY{o}{=} \PY{p}{(}\PY{k}{SELECT} \PY{n}{MAX}\PY{p}{(}\PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}\PY{p}{)} \PY{k}{FROM} \PY{n}{r1}\PY{p}{)}
-\end{Verbatim}
-
-    
-    \begin{verbatim}
-  customer_id    nbloc
--------------  -------
-          563        7
-    \end{verbatim}
-
-    
-    \hypertarget{solution-3}{%
-\paragraph{Solution 3:}\label{solution-3}}
 
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{k}{WITH} \PY{n}{r1} \PY{k}{as} \PY{p}{(}
@@ -945,15 +1004,49 @@ locations en une journée. Proposer au moins 3 solutions
          \PY{p}{)}
          \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}
          \PY{k}{FROM} \PY{n}{r1}
+         \PY{k}{WHERE} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc} \PY{o}{=} \PY{p}{(}\PY{k}{SELECT} \PY{n}{MAX}\PY{p}{(}\PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}\PY{p}{)} \PY{k}{FROM} \PY{n}{r1}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+1 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rr}
+\toprule
+   customer\_id &   nbloc \\
+\midrule
+           563 &       7 \\
+\bottomrule
+\end{tabular}
+
+    
+    \hypertarget{solution-3}{%
+\paragraph{Solution 3:}\label{solution-3}}
+
+   \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{k}{WITH} \PY{n}{r1} \PY{k}{as} \PY{p}{(}
+             \PY{k}{SELECT} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}date}\PY{o}{::}\PY{n+nb}{timestamp}\PY{o}{::}\PY{n+nb}{date} \PY{k}{as} \PY{n}{rdate}\PY{p}{,} \PY{n}{COUNT}\PY{p}{(}\PY{k}{DISTINCT}
+         \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{rental\PYZus{}id}\PY{p}{)} \PY{k}{as} \PY{n}{nbLoc}
+             \PY{k}{FROM} \PY{n}{rental} \PY{n}{r}\PY{p}{,} \PY{n}{customer} \PY{n}{c}
+             \PY{k}{WHERE} \PY{n}{r}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id} \PY{o}{=} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}
+             \PY{k}{GROUP} \PY{k}{BY} \PY{n}{c}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{rdate}
+         \PY{p}{)}
+         \PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{customer\PYZus{}id}\PY{p}{,} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc}
+         \PY{k}{FROM} \PY{n}{r1}
          \PY{k}{WHERE} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc} \PY{o}{\PYZgt{}=} \PY{k}{ALL}\PY{p}{(}\PY{k}{SELECT} \PY{n}{r1}\PY{l+m+mf}{.}\PY{n}{nbLoc} \PY{k}{FROM} \PY{n}{r1} \PY{p}{)}
 \end{Verbatim}
 
-    
-    \begin{verbatim}
-  customer_id    nbloc
--------------  -------
-          563        7
-    \end{verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
+1 row(s) returned.
+    \end{Verbatim}
+
+    \begin{tabular}{rr}
+\toprule
+   customer\_id &   nbloc \\
+\midrule
+           563 &       7 \\
+\bottomrule
+\end{tabular}
 
     
    \begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
